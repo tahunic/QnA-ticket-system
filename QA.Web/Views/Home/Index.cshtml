@@ -1,0 +1,44 @@
+﻿@model List<QA.Web.ViewModels.QuestionsDisplayVM>
+
+@{
+    ViewBag.Title = "QA";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+
+</p>
+<div class="container">
+    @Html.ActionLink("Ask a question", "Edit", "Question",null, new { @class="btn btn-success"})
+    
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>Title</td>
+                    <td>Content</td>
+                    <td>Subject</td>
+                    <td>Public</td>
+                    <td>Action</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Title</td>
+                        <td>@item.Content</td>
+                        <td>@item.Subject</td>
+                        <td>@(item.IsPublic?"Da":"Ne")</td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", "Question", new { id = item.Id}, new { @class="btn btn-default" })
+                            @Html.ActionLink("Delete", "Delete", "Question", new { id = item.Id }, new { @class = "btn btn-danger",
+                           onclick = "return confirm('Are you sure you want to delete this question?');" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+
+</div>
