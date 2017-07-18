@@ -23,11 +23,13 @@ namespace QA.Web.Models
             {
                 accounts.Add(new Account()
                 {
+                    Id = user.Id,
                     Username = user.Username,
                     Password = user.Password
                 });
             }
         }
+        
         
         public Account Find(string username)
         {
