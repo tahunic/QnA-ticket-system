@@ -20,9 +20,11 @@ namespace QA.Data
         public DbSet<City> Cities { get; set; }
         public DbSet<Professor> Professors { get; set; }
         public DbSet<Question> Questions { get; set; }
+        public DbSet<Role> Roles { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Subject> Subjects { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<UserRole> UserRoles { get; set; }
 
         public virtual void Commit()
         {

@@ -1,5 +1,6 @@
 ﻿using QA.Model.Models;
 using QA.Service;
+using QA.Web.Security;
 using QA.Web.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace QA.Web.Controllers
             this.questionService = questionService;
         }
 
-
+        [CustomAuthorize(Roles = "admin")]
         [HttpGet]
         public ActionResult Edit(int? id)
         {

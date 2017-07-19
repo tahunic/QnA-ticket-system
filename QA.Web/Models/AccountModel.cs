@@ -11,7 +11,7 @@ namespace QA.Web.Models
     public class AccountModel
     {
         //private MyContext _ctx = new MyContext();
-        private List<Account> accounts = new List<Account>();
+        private static List<Account> accounts = new List<Account>();
 
         public AccountModel()
         {
@@ -24,8 +24,11 @@ namespace QA.Web.Models
                 accounts.Add(new Account()
                 {
                     Id = user.Id,
+                    Fname = user.Fname,
+                    Lname = user.Lname,
                     Username = user.Username,
-                    Password = user.Password
+                    Password = user.Password,
+                    Roles = user.UserRoles.Select(r=>r.Role.Name).ToArray()
                 });
             }
         }

@@ -32,14 +32,22 @@ namespace QA.Web.Controllers
         {
             List<User> users = userService.GetAll().ToList();
             AccountModel am = new AccountModel(users);
-            if (string.IsNullOrEmpty(accountVM.Account.Username) || string.IsNullOrEmpty(accountVM.Account.Password) ||
-                am.Login(accountVM.Account.Username, accountVM.Account.Password) == null)
+            Account account = am.Login(accountVM.Account.Username, accountVM.Account.Password);
+
+            if (account == null)
             {
                 ViewBag.Error = "Account is invalid";
                 return View("Login");
             }
 
-            SessionPersister.username = accountVM.Account.Username;
+            //SessionPersister.Username = accountVM.Account.Username;
+            SessionPersister.User = new User
+            {
+                Id = account.Id,
+                Fname = account.Fname,
+                Lname = account.Lname,
+                Username = account.Username
+            };
 
             return RedirectToAction("Index", "Home");
         }
@@ -51,7 +59,8 @@ namespace QA.Web.Controllers
 
         public ActionResult Logout()
         {
-            SessionPersister.username = string.Empty;
+            //SessionPersister.Username = string.Empty;
+            SessionPersister.User = null;
             return RedirectToAction("Index", "Home");
         }
 

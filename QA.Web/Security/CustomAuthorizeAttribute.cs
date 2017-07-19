@@ -1,4 +1,5 @@
-﻿using QA.Web.Models;
+﻿using QA.Service;
+using QA.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,9 @@ namespace QA.Web.Security
     {
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
-            if (string.IsNullOrEmpty(SessionPersister.username))
-                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new
+            //if (string.IsNullOrEmpty(SessionPersister.Username))
+            if (SessionPersister.User == null)
+                    filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new
                 {
                     Controller = "Account",
                     Action = "Login"
@@ -21,7 +23,7 @@ namespace QA.Web.Security
             else
             {
                 AccountModel am = new AccountModel();
-                CustomPrincipal mp = new CustomPrincipal(am.Find(SessionPersister.username));
+                CustomPrincipal mp = new CustomPrincipal(am.Find(SessionPersister.User.Username));
                 if (!mp.IsInRole(Roles))
                     filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new
                     {

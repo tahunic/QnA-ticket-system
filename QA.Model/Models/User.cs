@@ -23,5 +23,7 @@ namespace QA.Model.Models
         public virtual Student Student{ get; set; }
         public virtual Professor Professor { get; set; }
 
+        public virtual List<UserRole> UserRoles { get; set; }
+
     }
 }
