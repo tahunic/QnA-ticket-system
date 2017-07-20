@@ -19,6 +19,8 @@ namespace QA.Web.Models
         }
         public AccountModel(List<User> users)
         {
+            if (users.Count() == 0)
+                accounts = new List<Account>();
             foreach (var user in users)
             {
                 accounts.Add(new Account()

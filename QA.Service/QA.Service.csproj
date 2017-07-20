@@ -45,6 +45,7 @@
     <Compile Include="QuestionService.cs" />
     <Compile Include="StudentService.cs" />
     <Compile Include="SubjectService.cs" />
+    <Compile Include="UserPasswordForgetService.cs" />
     <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>

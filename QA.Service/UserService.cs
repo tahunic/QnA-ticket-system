@@ -14,6 +14,7 @@ namespace QA.Service
     {
         IEnumerable<User> GetAll();
         User GetById(int id);
+        User GetByEmail(string email);
         void Create(User User);
         void Save();
     }
@@ -39,6 +40,12 @@ namespace QA.Service
         public User GetById(int id)
         {
             var user = usersRepository.GetById(id);
+            return user;
+        }
+        
+        public User GetByEmail(string email)
+        {
+            var user = usersRepository.Get(x => x.Email.Equals(email));
             return user;
         }
 

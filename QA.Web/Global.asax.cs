@@ -15,15 +15,14 @@ namespace QA.Web
     {
         protected void Application_Start()
         {
-            // Init database
-            Database.SetInitializer(new QASeedData());
-
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             BootStrapper.Run();
+            //Init database
+            //Database.SetInitializer(new QASeedData());
         }
     }
 }

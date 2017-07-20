@@ -7,16 +7,13 @@ using System.Threading.Tasks;
 
 namespace QA.Model.Models
 {
-    public class Subject : IEntity
+    public class UserPasswordForget : IEntity
     {
         public int Id { get; set; }
         public bool IsDeleted { get; set; }
-
-        public string Title { get; set; }
-        public int Year { get; set; }
-        public int Semester { get; set; }
-
-        public virtual ICollection<Question> Questions { get; set; }
-
+        public virtual User User { get; set; }
+        public int UserId { get; set; }
+        public Guid Code { get; set; }
+        public DateTime CreatedOn { get; set; }
     }
 }

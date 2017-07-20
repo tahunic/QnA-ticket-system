@@ -14,9 +14,10 @@ namespace QA.Data
         {
             GetCities().ForEach(c => context.Cities.Add(c));
             GetProfessors().ForEach(p => context.Professors.Add(p));
+            GetRoles().ForEach(r => context.Roles.Add(r));
             GetStudents().ForEach(s => context.Students.Add(s));
             GetSubjects().ForEach(s => context.Subjects.Add(s));
-            //GetQuestions().ForEach(q => context.Questions.Add(q));
+            GetQuestions().ForEach(q => context.Questions.Add(q));
 
             base.Seed(context);
         }
@@ -62,6 +63,18 @@ namespace QA.Data
                         Password = "test",
                         CityId = 1
                     }
+                }
+            };
+        }
+
+        private static List<Role> GetRoles()
+        {
+            return new List<Role>
+            {
+                new Role
+                {
+                    IsDeleted = false,
+                    Name = "admin"
                 }
             };
         }

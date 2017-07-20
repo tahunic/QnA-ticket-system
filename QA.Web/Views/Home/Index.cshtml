@@ -9,7 +9,7 @@
 
 </p>
 <div class="container">
-    @Html.ActionLink("Ask a question", "Edit", "Question",null, new { @class="btn btn-success"})
+    @Ajax.ActionLink("Ask a question", "Edit", "Question", null, new AjaxOptions { UpdateTargetId = "AddQuestionDiv"}, new { @class="btn btn-success"})
     
 
         <table class="table table-striped">
@@ -40,5 +40,7 @@
             </tbody>
         </table>
 
+    <div id="AddQuestionDiv">
 
+    </div>
 </div>

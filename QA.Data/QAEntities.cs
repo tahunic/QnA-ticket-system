@@ -24,6 +24,7 @@ namespace QA.Data
         public DbSet<Student> Students { get; set; }
         public DbSet<Subject> Subjects { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<UserPasswordForget> UserPasswordForget { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
 
         public virtual void Commit()
@@ -36,9 +37,11 @@ namespace QA.Data
             modelBuilder.Configurations.Add(new CityConfiguration());
             modelBuilder.Configurations.Add(new ProfessorConfiguration());
             modelBuilder.Configurations.Add(new QuestionConfiguration());
+            modelBuilder.Configurations.Add(new RoleConfiguration());
             modelBuilder.Configurations.Add(new StudentConfiguration());
             modelBuilder.Configurations.Add(new SubjectConfiguration());
             modelBuilder.Configurations.Add(new UserConfiguration());
+            modelBuilder.Configurations.Add(new UserPasswordForgetConfiguration());
 
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Entity<User>().HasOptional(x => x.Student).WithRequired(y => y.User);

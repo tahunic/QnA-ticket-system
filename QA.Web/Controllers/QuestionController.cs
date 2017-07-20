@@ -44,7 +44,7 @@ namespace QA.Web.Controllers
                 questionVM.SubjectId = question.SubjectId;
                 questionVM.IsPublic = question.IsPublic;
             }
-            return View(questionVM);
+            return PartialView(questionVM);
         }
 
 
@@ -66,7 +66,7 @@ namespace QA.Web.Controllers
                     Content = model.Content,
                     IsDeleted = false,
                     IsPublic = model.IsPublic,
-                    StudentId = 3,
+                    StudentId = SessionPersister.User.Id,
                     SubjectId = model.SubjectId,
                     Date = DateTime.Now,
                     ViewCount = 0
@@ -82,7 +82,7 @@ namespace QA.Web.Controllers
                 question = questionService.GetById(model.Id);
 
                 question.IsPublic = model.IsPublic;
-                question.StudentId = 3;
+                question.StudentId = SessionPersister.User.Id;
                 question.SubjectId = model.SubjectId;
                 question.Title = model.Title;
                 question.Content = model.Content;

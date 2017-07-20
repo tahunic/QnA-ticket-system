@@ -11,9 +11,8 @@ namespace QA.Model.Models
     {
         public int Id { get; set; }
         public bool IsDeleted { get; set; }
-
         public string Name { get; set; }
-        public virtual List<UserRole> UserRoles { get; set; }
 
+        public virtual ICollection<UserRole> UserRoles { get; set; }
     }
 }
