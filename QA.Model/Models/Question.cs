@@ -16,6 +16,8 @@ namespace QA.Model.Models
         public bool IsPublic { get; set; }
         public int ViewCount { get; set; }
         public DateTime Date { get; set; }
+        public string ImagePath { get; set; }
+
 
         public virtual Student Student { get; set; }
         public int StudentId { get; set; }

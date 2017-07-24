@@ -4,6 +4,7 @@ using QA.Web.Security;
 using QA.Web.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -43,6 +44,8 @@ namespace QA.Web.Controllers
                 questionVM.Content = question.Content;
                 questionVM.SubjectId = question.SubjectId;
                 questionVM.IsPublic = question.IsPublic;
+                
+
             }
             return PartialView(questionVM);
         }
@@ -60,6 +63,10 @@ namespace QA.Web.Controllers
 
             if(model.Id == 0)
             {
+                var fileName = Path.GetFileName(model.File.FileName);
+                var path = Path.Combine(Server.MapPath("~/Images"), fileName);
+                model.File.SaveAs(path);
+
                 question = new Question
                 {
                     Title = model.Title,
@@ -69,9 +76,10 @@ namespace QA.Web.Controllers
                     StudentId = SessionPersister.User.Id,
                     SubjectId = model.SubjectId,
                     Date = DateTime.Now,
-                    ViewCount = 0
+                    ViewCount = 0,
+                    ImagePath = path
                 };
-
+                
                 questionService.Create(question);
                 questionService.Save();
 
@@ -87,6 +95,11 @@ namespace QA.Web.Controllers
                 question.Title = model.Title;
                 question.Content = model.Content;
                 question.Date = DateTime.Now;
+
+                var fileName = Path.GetFileName(model.File.FileName);
+                var path = Path.Combine(Server.MapPath("~/Images"), fileName);
+                model.File.SaveAs(path);
+                question.ImagePath = path;
 
                 questionService.Save();
 

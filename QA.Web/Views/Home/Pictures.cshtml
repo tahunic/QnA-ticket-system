@@ -1,0 +1,14 @@
+﻿@model List<QA.Web.ViewModels.QuestionsDisplayVM>
+@{
+    ViewBag.Title = "Pictures";
+}
+
+@foreach (var item in Model)
+{
+    if(item.ImagePath != null)
+    {
+        var result = item.ImagePath.Substring(item.ImagePath.LastIndexOf('\\') + 1);
+        <img src="@Url.Content(item.ImagePath)"  alt="Imagex" />
+    }
+    <br />
+}

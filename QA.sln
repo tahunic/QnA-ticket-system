@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QA.Service", "QA.Service\QA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QA.Web", "QA.Web\QA.Web.csproj", "{A77CB40B-DC6A-42E5-907D-F46D1068042F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QA.API", "QA.API\QA.API.csproj", "{77F04B23-6823-4D4A-A1FD-415DE6F3962B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{A77CB40B-DC6A-42E5-907D-F46D1068042F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A77CB40B-DC6A-42E5-907D-F46D1068042F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A77CB40B-DC6A-42E5-907D-F46D1068042F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77F04B23-6823-4D4A-A1FD-415DE6F3962B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77F04B23-6823-4D4A-A1FD-415DE6F3962B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77F04B23-6823-4D4A-A1FD-415DE6F3962B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77F04B23-6823-4D4A-A1FD-415DE6F3962B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

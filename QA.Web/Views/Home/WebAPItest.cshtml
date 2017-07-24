@@ -1,0 +1,13 @@
+﻿@model QA.Model.Models.User
+@{
+    ViewBag.Title = "WebAPItest";
+}
+
+<h2>WebAPItest</h2>
+
+@Html.TextBoxFor(x=>x.Fname)
+<br />
+@Html.TextBoxFor(x => x.Lname)
+<br />
+@Html.TextBoxFor(x => x.City.Name)
+<br />

@@ -12,5 +12,6 @@ namespace QA.Web.ViewModels
         public string Content { get; set; }
         public string Subject { get; set; }
         public bool IsPublic { get; set; }
+        public string ImagePath { get; set; }
     }
 }

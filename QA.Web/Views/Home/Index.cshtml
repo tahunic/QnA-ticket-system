@@ -9,7 +9,8 @@
 
 </p>
 <div class="container">
-    @Ajax.ActionLink("Ask a question", "Edit", "Question", null, new AjaxOptions { UpdateTargetId = "AddQuestionDiv"}, new { @class="btn btn-success"})
+    @Ajax.ActionLink("Ask a question", "Edit", "Question", null, new AjaxOptions { UpdateTargetId = "AddQuestionDiv" }, new { @class = "btn btn-success" })
+    @Html.ActionLink("Pictures", "Pictures", "Home", null, new { @class="btn btn-primary"})
     
 
         <table class="table table-striped">
@@ -19,6 +20,7 @@
                     <td>Content</td>
                     <td>Subject</td>
                     <td>Public</td>
+                    <td>Image</td>
                     <td>Action</td>
                 </tr>
             </thead>
@@ -30,6 +32,12 @@
                         <td>@item.Content</td>
                         <td>@item.Subject</td>
                         <td>@(item.IsPublic?"Da":"Ne")</td>
+                        <td>
+                            @if (item.ImagePath != null)
+                            {
+                                <img src="@Url.Content(item.ImagePath)" alt="Image" />
+                            }
+                        </td>
                         <td>
                             @Html.ActionLink("Edit", "Edit", "Question", new { id = item.Id}, new { @class="btn btn-default" })
                             @Html.ActionLink("Delete", "Delete", "Question", new { id = item.Id }, new { @class = "btn btn-danger",

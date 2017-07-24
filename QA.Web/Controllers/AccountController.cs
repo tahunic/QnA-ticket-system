@@ -7,6 +7,7 @@ using QA.Web.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
@@ -18,6 +19,7 @@ namespace QA.Web.Controllers
         private readonly IUserService userService;
         private readonly IStudentService studentService;
         private readonly IUserPasswordForgetService userPasswordForgetService;
+        private WebAPIHelper tokenAPIservice = new WebAPIHelper("api/token");
 
         public AccountController(IUserService userService, IStudentService studentService, IUserPasswordForgetService userPasswordForgetService)
         {
@@ -48,7 +50,6 @@ namespace QA.Web.Controllers
                 return View("Login");
             }
             
-            //SessionPersister.Username = accountVM.Account.Username;
             SessionPersister.User = new User
             {
                 Id = account.Id,
@@ -57,6 +58,12 @@ namespace QA.Web.Controllers
                 Username = account.Username
             };
 
+            HttpResponseMessage response = tokenAPIservice.GetActionResponse("GetToken", account.Username + "/" + account.Password);
+            if (response.IsSuccessStatusCode)
+            {
+                SessionPersister.Jwt = response.Content.ReadAsAsync<string>().Result;
+            }
+
             return RedirectToAction("Index", "Home");
         }
         
@@ -64,6 +71,7 @@ namespace QA.Web.Controllers
         {
             //SessionPersister.Username = string.Empty;
             SessionPersister.User = null;
+            SessionPersister.Jwt = string.Empty;
             return RedirectToAction("Index", "Home");
         }
 

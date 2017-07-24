@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QA.Web.Helper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -16,5 +17,8 @@ namespace QA.Web.ViewModels
         public List<SelectListItem> Subject { get; set; }
         public int SubjectId { get; set; }
         public bool IsPublic { get; set; }
+
+        [ValidateFile(ErrorMessage = "Please select a PNG image smaller than 1 MB")]
+        public HttpPostedFileBase File { get; set; }
     }
 }
