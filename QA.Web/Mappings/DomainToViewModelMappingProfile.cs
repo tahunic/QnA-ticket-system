@@ -18,6 +18,10 @@ namespace QA.Web.Mappings
         protected override void Configure()
         {
             Mapper.CreateMap<City, CityVM>();
+            Mapper.CreateMap<Question, QuestionsDisplayVM>()
+                .ForMember(q => q.Subject, map => map.MapFrom(vm => vm.Subject.Title));
+            Mapper.CreateMap<Question, QuestionEditVM>()
+                .ForMember(q => q.Subject, map => map.MapFrom(vm => vm.Subject.Title));
             //Mapper.CreateMap<Gadget, GadgetViewModel>();
         }
     }

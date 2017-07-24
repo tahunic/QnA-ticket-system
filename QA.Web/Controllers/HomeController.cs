@@ -29,20 +29,7 @@ namespace QA.Web.Controllers
         public ActionResult Index(string category = null)
         {
             List<Question> questions = questionService.GetAll().ToList();
-            List<QuestionsDisplayVM> questionsVM = new List<QuestionsDisplayVM>();
-
-            foreach (var item in questions)
-            {
-                questionsVM.Add(new QuestionsDisplayVM
-                {
-                    Id = item.Id,
-                    Content = item.Content,
-                    IsPublic = item.IsPublic,
-                    Subject = item.Subject.Title,
-                    Title = item.Title,
-                    ImagePath = item.ImagePath
-                });
-            }
+            List<QuestionsDisplayVM> questionsVM = Mapper.Map<List<Question>, List<QuestionsDisplayVM>>(questions);
 
             return View(questionsVM);
         }
@@ -62,21 +49,8 @@ namespace QA.Web.Controllers
         public ActionResult Pictures()
         {
             List<Question> questions = questionService.GetAll().ToList();
-
-            List<QuestionsDisplayVM> questionsVM = new List<QuestionsDisplayVM>();
-            foreach (var item in questions)
-            {
-                questionsVM.Add(new QuestionsDisplayVM
-                {
-                    Id = item.Id,
-                    Content = item.Content,
-                    IsPublic = item.IsPublic,
-                    Subject = item.Subject.Title,
-                    Title = item.Title,
-                    ImagePath = item.ImagePath
-                });
-            }
-
+            List<QuestionsDisplayVM> questionsVM = Mapper.Map<List<Question>, List<QuestionsDisplayVM>>(questions);
+            
             return View(questionsVM);
         }
     }

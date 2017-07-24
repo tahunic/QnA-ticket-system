@@ -43,8 +43,7 @@ namespace QA.Web.Controllers
                 questionVM.Title = question.Title;
                 questionVM.Content = question.Content;
                 questionVM.SubjectId = question.SubjectId;
-                questionVM.IsPublic = question.IsPublic;
-                
+                questionVM.IsPublic = question.IsPublic;             
 
             }
             return PartialView(questionVM);
@@ -64,7 +63,7 @@ namespace QA.Web.Controllers
             if(model.Id == 0)
             {
                 var fileName = Path.GetFileName(model.File.FileName);
-                var path = Path.Combine(Server.MapPath("~/Images"), fileName);
+                var path = Path.Combine(Server.MapPath("~/Images/"), fileName);
                 model.File.SaveAs(path);
 
                 question = new Question
